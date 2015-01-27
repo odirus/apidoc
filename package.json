@@ -13,6 +13,8 @@
     "express": "~4.2.0",
     "less-middleware": "1.0.x",
     "morgan": "~1.0.0",
+    "mysql": "^2.5.4",
+    "orm": "^2.1.22",
     "serve-favicon": "^2.2.0"
   }
 }
