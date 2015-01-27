@@ -1,17 +1,17 @@
-# 数据库设计 MongoDB部分
+# 数据库设计 Mysql 部分
 
-## collection user  
+## table user  
 id  
 username  
 password #md5(md5 + md5)  
 privilege => {project_ id => 5 | 1}
 
-## collection project  
+## table project  
 id  
 name  
 admin_id  
 
-## collection document  
+## table document  
 id  
 class_ id  
 p_ class_ id  
