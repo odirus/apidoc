@@ -4,7 +4,12 @@
 id  
 username  
 password #md5(md5 + md5)  
-privilege => {project_ id => 5 | 1}
+
+## table privilege
+id
+user_ id 
+project_ id
+mode #[1 | 5]
 
 ## table project  
 id  

@@ -5,6 +5,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var RedisSessions = require('redis-sessions');
+
+var settings = require('./settings');
+
+var rs = new RedisSessions(settings.redis);
+var models = require('../models');
 
 module.exports = function (app, express) {
     app.set('views', path.join(__dirname, '..', 'views'));
@@ -18,6 +24,15 @@ module.exports = function (app, express) {
     app.use(require('less-middleware')(path.join(__dirname, '..', 'public')));
     app.use(express.static(path.join(__dirname, 'public')));
     app.use(function (req, res, next) {
-	return next();
+        models(function (err, db) {
+            if (err) {
+                return next(err);
+            }
+
+            req.models = db.models;
+            req.db = db;
+
+            return next();
+        });
     });
 };

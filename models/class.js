@@ -1,10 +1,11 @@
 "use strict";
 
+var orm = require('orm');
+
 module.exports = function (orm, db) {
-    db.User = db.define('user', {
+    db.Class= db.define('class', {
 	    id: {type: 'serial', key: true},
-	    username: {type: 'text', size: 128},
-	    password: {type: 'text', size: 32}
+	    name: {type: 'text'}
 	},
 	{
 	    cache: false
