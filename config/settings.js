@@ -2,12 +2,12 @@
 
 module.exports = {
     database: {
-	host: '192.168.11.11',
+	host: process.env.OPENSHIFT_MYSQL_DB_HOST,
 	database: 'apidoc',
 	protocol: 'mysql',
-	port: '3306',
-	user: 'test',
-	password: 'test',
+	port: process.env.OPENSHIFT_MYSQL_DB_PORT,
+	user: process.env.OPENSHIFT_MYSQL_DB_USERNAME,
+	password: process.env.OPENSHIFT_MYSQL_DB_PASSWORD,
 	query: {pool: true}
     },
     redis: {
