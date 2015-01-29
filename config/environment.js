@@ -24,7 +24,7 @@ module.exports = function (app, express) {
     app.use(require('less-middleware')(path.join(__dirname, '..', 'public')));
     app.use(express.static(path.join(__dirname, 'public')));
     app.use(function (req, res, next) {
-        models(function (err, db) {
+	models(function (err, db) {
             if (err) {
                 return next(err);
             }

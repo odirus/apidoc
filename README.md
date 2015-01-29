@@ -11,3 +11,6 @@ apidoc的功能是记录项目开发和维护过程中不同部分之间的协�
 ## 实现方式
 * 主体构成 NodeJS + Express + Mysql + redis
 * session实现: redis-sessions
+
+## 初始化方式
+* node /tasks/init.js

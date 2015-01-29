@@ -18,5 +18,21 @@
     "redis-sessions": "^0.3.8",
     "serve-favicon": "^2.2.0",
     "underscore": "^1.7.0"
-  }
+  },
+  "description": "记录项目开发和维护过程中不同部分之间的协作信息",
+  "main": "bin/www",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/odirus/apidoc.git"
+  },
+  "keywords": [
+    "apidoc"
+  ],
+  "author": "odirus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/odirus/apidoc/issues"
+  },
+  "homepage": "https://github.com/odirus/apidoc"
 }

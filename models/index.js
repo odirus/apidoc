@@ -7,6 +7,10 @@ var connection = null;
 
 function setup(db, cb) {
     require('./user')(orm, db);
+    require('./project')(orm, db);
+    require('./privilege')(orm, db);
+    require('./class')(orm, db);
+    require('./document')(orm, db);
 
     return cb(null, db);
 }

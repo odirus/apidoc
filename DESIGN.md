@@ -5,25 +5,30 @@ id
 username  
 password #md5(md5 + md5)  
 
-## table privilege
-id
-user_ id 
-project_ id
-mode #[1 | 5]
-
 ## table project  
 id  
 name  
 admin_id  
 
+## table privilege
+id  
+user_ id   
+project_ id  
+mode #['r' | 'rw']
+
+## table class
+id  
+name
+
 ## table document  
 id  
-class_ id  
-p_ class_ id  
-class_ level  
+class_ id  # n n >= 1  
+p_ class_ id  # n >= 1  
+class_ level # n >= 0  
 project_ id  
-document => {0 => doc, 1 => doc}
-
+content_type  #['markdown']  
+content  
+update_time   
 
 # 数据库设计  redis部分
 

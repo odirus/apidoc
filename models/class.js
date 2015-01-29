@@ -3,7 +3,8 @@
 var orm = require('orm');
 
 module.exports = function (orm, db) {
-    db.Class= db.define('class', {
+    db.Class= db
+	.define('class', {
 	    id: {type: 'serial', key: true},
 	    name: {type: 'text'}
 	},
