@@ -13,9 +13,9 @@ var rs = new RedisSessions(settings.redis);
 var models = require('../models');
 
 module.exports = function (app, express) {
+    app.set('env', (settings.debug ? 'development' : 'product'));
     app.set('views', path.join(__dirname, '..', 'views'));
     app.set('view engine', 'ejs');
-
     app.use(favicon(path.join(__dirname, '..', 'public', 'images', 'favicon.ico')));
     app.use(logger('dev'));
     app.use(bodyParser.json());
@@ -25,14 +25,14 @@ module.exports = function (app, express) {
     app.use(express.static(path.join(__dirname, 'public')));
     app.use(function (req, res, next) {
 	models(function (err, db) {
-            if (err) {
-                return next(err);
-            }
+	    if (err) {
+		return next(err);
+	    }
 
-            req.models = db.models;
-            req.db = db;
+	    req.models = db.models;
+	    req.db = db;
 
-            return next();
-        });
+	    return next();
+	});
     });
 };

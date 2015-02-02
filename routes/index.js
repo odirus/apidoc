@@ -1,9 +1,12 @@
+"use strict";
+
 var express = require('express');
-var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+var router = new express.Router({
+    caseSensitive: true
 });
+var accountRoute = require('./account')(router);
 
-module.exports = router;
+module.exports = function (app) {
+    app.use('/account', accountRoute);
+};

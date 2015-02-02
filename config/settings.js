@@ -1,6 +1,7 @@
 "use strict";
 
 module.exports = {
+    debug: true,
     database: {
 	host: '192.168.11.11',
 	database: 'apidoc',
