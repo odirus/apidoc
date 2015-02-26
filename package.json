@@ -21,7 +21,9 @@
   },
   "description": "记录项目开发和维护过程中不同部分之间的协作信息",
   "main": "bin/www",
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/odirus/apidoc.git"

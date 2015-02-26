@@ -17,14 +17,14 @@ function setup(db, cb) {
 
 module.exports = function (cb) {
     if (connection) {
-	return cb(null, connection);
+        return cb(null, connection);
     }
 
     orm.connect(settings.database, function (err, db) {
-	if (err) {
-	    return cb(err);
-	}
-	connection = db;
-	setup(db, cb);
+        if (err) {
+            return cb(err);
+        }
+        connection = db;
+        setup(db, cb);
     });
 };
