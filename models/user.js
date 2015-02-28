@@ -7,6 +7,10 @@ module.exports = function (orm, db) {
 	    password: {type: 'text', size: 32}
 	},
 	{
-	    cache: false
+	    cache: false,
+	    validations: {
+		username: orm.enforce.ranges.length(1, undefined),
+		password: orm.enforce.ranges.length(32, 32)
+	    }
 	});
 };

@@ -3,13 +3,17 @@
 var orm = require('orm');
 
 module.exports = function (orm, db) {
-    db.Class= db
+    db.Class = db
         .define('class',
+	{
+	    id: {type: 'serial', key: true},
+	    name: {type: 'text'},
+	    p_class_id: {type: 'integer'}
+	},
         {
-            id: {type: 'serial', key: true},
-            name: {type: 'text'}
-        },
-        {
-            cache: false
+            cache: false,
+	    validations: {
+		name: orm.enforce.ranges.length(1, undefined)
+	    }
         });
 };

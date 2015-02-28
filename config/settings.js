@@ -2,6 +2,9 @@
 
 module.exports = {
     debug: true,
+    cookie: {
+	expireTime: 3600//单位秒
+    },
     database: {
 	host: '192.168.11.11',
 	database: 'apidoc',
@@ -9,7 +12,7 @@ module.exports = {
 	port: '3306',
 	user: 'test',
 	password: 'test',
-	query: {pool: true}
+	//query: {pool: false}//暂时需要关闭该选项,事务组件不支持,等我前去解决
     },
     redis: {
 	app: 'apidoc',

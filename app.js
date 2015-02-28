@@ -15,14 +15,24 @@ app.use(function(req, res, next) {
     next(err);
 });
 
+app.use(function (err, req, res, next) {
+    console.log(err);
+
+    if (err.type === 'validation') {
+	return res.status(400).send('参数不正确');
+    } else {
+	return next(err);
+    }
+});
+
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
+	res.status(err.status || 500);
 
-        res.render('public/error', {
+	res.render('public/error', {
             message: err.message,
             error: err
-        });
+	});
     });
 }
 

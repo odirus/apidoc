@@ -6,7 +6,7 @@ module.exports = function (router) {
     router.route('/write')
 	.get(documentControl.write);
     router.route('/read')
-	.get(documentControl.read)
+	.get(documentControl.read);
 
     return router;
 };

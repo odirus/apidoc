@@ -16,17 +16,18 @@ user_ id
 project_ id  
 mode #['r' | 'rw']
 
+组合索引 user_ id & project_ id
+
 ## table class
 id  
-name
+name  
+p_ class_ id  
 
 ## table document  
 id  
-class_ id  # n n >= 1  
-p_ class_ id  # n >= 1  
-class_ level # n >= 0  
+class_ id  
 project_ id  
-content_type  #['markdown']  
+content_ type  #['markdown']  
 content  
 update_time   
 

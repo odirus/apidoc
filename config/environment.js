@@ -5,12 +5,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var RedisSessions = require('redis-sessions');
 
 var settings = require('./settings');
-
-var rs = new RedisSessions(settings.redis);
-var models = require('../models');
+var middlewarePrivilege = require('../middleware/privilege');
+var middlewareDatabase = require('../middleware/database');
 
 module.exports = function (app, express) {
     app.set('env', (settings.debug ? 'development' : 'product'));
@@ -23,16 +21,6 @@ module.exports = function (app, express) {
     app.use(cookieParser());
     app.use(require('less-middleware')(path.join(__dirname, '..', 'public')));
     app.use(express.static(path.join(__dirname, 'public')));
-    app.use(function (req, res, next) {
-	models(function (err, db) {
-	    if (err) {
-		return next(err);
-	    }
-
-	    req.models = db.models;
-	    req.db = db;
-
-	    return next();
-	});
-    });
+    app.use(middlewareDatabase);
+    app.use(middlewarePrivilege);
 };

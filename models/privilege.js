@@ -11,7 +11,12 @@ module.exports = function (orm, db) {
 	    mode: ['r', 'rw']
 	},
 	{
-	    cache: false
+	    cache: false,
+	    validations: {
+		user_id: orm.enforce.ranges.number(1, undefined),
+		project_id: orm.enforce.ranges.number(1, undefined),
+		mode: orm.enforce.lists.inside(['r', 'rw'])
+	    }
 	})
 	.hasOne('user', db.User, {
 	    field: 'user_id'

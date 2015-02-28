@@ -1,6 +1,7 @@
 "use strict";
 
 var orm = require('orm');
+var transaction = require("orm-transaction");
 var settings = require('../config/settings');
 
 var connection = null;
@@ -24,6 +25,7 @@ module.exports = function (cb) {
         if (err) {
             return cb(err);
         }
+	db.use(transaction);
         connection = db;
         setup(db, cb);
     });
