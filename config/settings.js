@@ -1,5 +1,7 @@
 "use strict";
 
+var path = require('path');
+
 module.exports = {
     debug: true,
     cookie: {
@@ -12,6 +14,11 @@ module.exports = {
 	port: '3306',
 	user: 'test',
 	password: 'test',
+	custom_methods: {
+	    add_settings: function (orm) {
+		orm.settings.set("connection.reconnect", true);
+	    }
+	}
 	//query: {pool: false}//暂时需要关闭该选项,事务组件不支持,等我前去解决
     },
     redis: {
@@ -22,6 +29,11 @@ module.exports = {
 	wipe: 600,
 	options: {
 	    auth_pass: '335577'
+	}
+    },
+    methods: {
+	getAppPath: function () {
+	    return path.dirname(__dirname);
 	}
     }
 };

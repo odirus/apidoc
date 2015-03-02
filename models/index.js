@@ -17,6 +17,8 @@ function setup(db, cb) {
 }
 
 module.exports = function (cb) {
+    settings.database.custom_methods.add_settings.call(this, orm);
+
     if (connection) {
         return cb(null, connection);
     }
@@ -26,6 +28,7 @@ module.exports = function (cb) {
             return cb(err);
         }
 	db.use(transaction);
+
         connection = db;
         setup(db, cb);
     });

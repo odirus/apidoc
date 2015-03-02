@@ -16,8 +16,6 @@ app.use(function(req, res, next) {
 });
 
 app.use(function (err, req, res, next) {
-    console.log(err);
-
     if (err.type === 'validation') {
 	return res.status(400).send('参数不正确');
     } else {

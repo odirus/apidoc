@@ -58,7 +58,13 @@ module.exports = function (req, res, next) {
     } else {
 	//目前只允许访问登录界面
 	//@todo目前这个功能还需要更加灵活地进行控制
-	if (req.path !== '/api/auth' && req.path !== '/account/login') {
+	var regStatic = new RegExp('^/static/');//静态资源部需要认证
+	var regStaticBower = new RegExp('^/static-bower/');
+
+	if (req.path !== '/api/auth' &&
+	    req.path !== '/account/login' &&
+	    !regStatic.test(req.path) &&
+	    !regStaticBower.test(req.path)) {
 	    return res.redirect('/account/login');
 	} else {
 	    req.isLogin = false;

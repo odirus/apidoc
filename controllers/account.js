@@ -1,5 +1,5 @@
 "use strict";
 
 module.exports.login = function (req, res, next) {
-    return res.send('This is login page');
+    return res.render('account/login');
 };

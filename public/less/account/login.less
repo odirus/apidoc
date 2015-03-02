@@ -1,0 +1,22 @@
+@import "../base.less";
+
+@login-box-control-width: 100%;
+
+#login-box {
+  width: 400px;
+  height: 400px;
+  margin: 200px auto;
+
+  div.input-group {
+    width: @login-box-control-width;
+    margin: 40px auto;
+  }
+
+  div.button-group {
+    width: @login-box-control-width;
+    margin: 0 auto;
+    button {
+      width: @login-box-control-width / 2 - 0.5%;
+    }
+  }
+}
