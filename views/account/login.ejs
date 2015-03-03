@@ -1,25 +1,38 @@
 <% include ../common/header.ejs %>
-<link rel="stylesheet" href="/static/less/account/login.css"/>
+<link rel="stylesheet" href="/static/less/account/login.css" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html"/>
 <div class="row">
     <div class="col-md-1">
     </div>
     <div class="col-md-10">
         <div id="login-box">
-            <div class="input-group input-group-lg">
-                <span class="input-group-addon" id="basic-addon1">Username</span>
-                <input type="text" class="form-control" placeholder="请输入 Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group input-group-lg">
-                <span class="input-group-addon" id="basic-addon2">Password</span>
-                <input type="text" class="form-control" placeholder="请输入 Password" aria-describedby="basic-addon2">
-            </div>
-            <div class="button-group">
-                <button type="button" class="btn btn-lg">登录</button>
-                <button type="button" class="btn btn-lg">注册</button>
-            </div>
+            <form action="/account/dologin" method="post">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="basic-addon1">Username</span>
+                    <input name="username" type="text" class="form-control" placeholder="请输入 Username" aria-describedby="basic-addon1">
+
+                </div>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="basic-addon2">Password</span>
+                    <input name="password" type="password" class="form-control" placeholder="请输入 Password" aria-describedby="basic-addon2">
+                </div>
+                <div class="button-group">
+                    <input type="submit" class="btn btn-lg" value="登录"></input>
+                    <button type="button" class="btn btn-lg">注册</button>
+                </div>
+                <div class="check-msg alert alert-danger">
+                    <p>请填完整的登录信息</p>
+                </div>
+                <!-- 登录提示信息 -->
+                <% if (messageContent) { %>
+                <div class="error-msg alert alert-danger">
+                    <%= messageContent %>
+                </div>
+                <% } %>
+            </form>
         </div>
     </div>
     <div class="col-md-1"></div>
 </div>
-<script type="text/javascript" data-main=""  src="/static/requirejs/require.js"></script>
+<script type="text/javascript" data-main="/static/js/pages/account/login"  src="/static/requirejs/require.js"></script>
 <% include ../common/footer.ejs %>

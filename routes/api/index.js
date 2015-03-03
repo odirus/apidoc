@@ -1,14 +1,9 @@
 "use strict";
 
-var apiAuth = require('../../api/auth');
 var apiDocument = require('../../api/document');
 var apiProject = require('../../api/project');
 
 module.exports = function (router) {
-    router.route('/auth')
-	.post(apiAuth.login)
-	.delete(apiAuth.logout);
-
     router.route('/project')
 	.post(apiProject.create);
     router.route('/project/:projectId')

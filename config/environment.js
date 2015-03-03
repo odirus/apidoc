@@ -7,6 +7,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var middlewareLess = require('less-middleware');
+var cookieSession = require('cookie-session');
 
 var settings = require('./settings');
 var middlewarePrivilege = require('../middleware/privilege');
@@ -20,6 +21,9 @@ module.exports = function (app, express) {
     app.use(logger('dev'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded());
+    app.use(cookieSession({
+	keys: [settings.session.key]
+    }));
     app.use(cookieParser());
     //使用中间件的使用，注意挂载路径
     if (app.get('env') === 'development') {

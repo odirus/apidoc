@@ -1,22 +1,37 @@
 @import "../base.less";
 
-@login-box-control-width: 100%;
-
 #login-box {
+  @box-margin: 40px;
+  @box-width: 100%;
+
   width: 400px;
   height: 400px;
   margin: 200px auto;
 
   div.input-group {
-    width: @login-box-control-width;
-    margin: 40px auto;
+    width: @box-width;
+    margin: @box-margin auto;
   }
 
   div.button-group {
-    width: @login-box-control-width;
+    width: @box-width;
     margin: 0 auto;
     button {
-      width: @login-box-control-width / 2 - 0.5%;
+      width: @box-width / 2 - 0.5%;
     }
+    input {
+      width: @box-width / 2 - 0.5%;
+    }
+  }
+
+  div.error-msg {
+    margin-top: @box-margin;
+    text-align: center;
+  }
+
+  div.check-msg {
+    margin-top: @box-margin;
+    text-align: center;
+    display: none;
   }
 }

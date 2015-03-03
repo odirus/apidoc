@@ -4,22 +4,25 @@ var _ = require('underscore');
 var crypto = require('crypto');
 var settings = require('../config/settings');
 
-module.exports.addLoginInfo = function (res, userInfo) {
-    setCookie(res, 'user', userInfo);
+//添加用户登录信息
+module.exports.addLoginInfo = function (req, res, userInfo) {
+    req.session.user = userInfo;
 };
 
-module.exports.deleteLoginInfo = function (res) {
-    res.clearCookie('user');
+//删除用户登录信息
+module.exports.deleteLoginInfo = function (req, res) {
+    req.session = null;
 };
 
+//自定义方式cookie
 function setCookie(res, name, value, options) {
     options = options || {};
     options = _.extend(options, {maxAge: settings.cookie.expireTime * 1000});
     res.cookie(name, value, options);
 }
 
-module.exports.hashPassword = function (hashPassword) {
-    return crypto.createHash('md5').update(hashPassword + hashPassword).digest('hex');
+module.exports.hashPassword = function (password) {
+    return crypto.createHash('md5').update(password).digest('hex');
 };
 
 //需要登录用户才能继续访问

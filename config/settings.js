@@ -4,6 +4,9 @@ var path = require('path');
 
 module.exports = {
     debug: true,
+    session: {
+	key: 'apidoc'
+    },
     cookie: {
 	expireTime: 3600//单位秒
     },
@@ -35,5 +38,9 @@ module.exports = {
 	getAppPath: function () {
 	    return path.dirname(__dirname);
 	}
+    },
+    routes: {
+	homePage: '/',
+	loginPage: 'account/login'
     }
 };
