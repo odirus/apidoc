@@ -9,6 +9,8 @@ module.exports = function (router) {
 	.post(accountControl.doLogin);
     router.route('/dologout')
 	.post(accountControl.doLogout);
+    router.route('/doreg')
+	.post(accountControl.doReg);
 
     return router;
 };

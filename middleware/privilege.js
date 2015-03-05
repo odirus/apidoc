@@ -2,19 +2,24 @@
 
 var _ = require('underscore');
 var async = require('async');
+var serviceAuth = require('../service/auth');
 
-var defaultMessageType = 'common';
+var messageDefaultType = 'common';
+var messageErrorType = 'error';
 
 //实现用户权限认证功能
 module.exports = function (req, res, next) {
     //初始化返回提示信息
-    if (req.session === null || !req.session.message) {
+    if (req.session === null ||
+	!req.session.message ||
+	typeof req.session.pageHash === 'undefined') {
 	req.session = {
 	    //默认消息类型
 	    message: {
-		type: defaultMessageType,
+		type: messageDefaultType,
 		content: null
-	    }
+	    },
+	    pageHash: null
 	};
     }
 
@@ -81,22 +86,29 @@ function selfRes (req, res, next) {
     var _render = res.render;
 
     res.render = function (view, options, fn) {
+	var pageHash;
 	var messageType;
 	var messageContent;
 	options = options || {};
 
 	if (req.session !== null &&
 	    req.session.message &&
-	    req.session.messagecontent) {
+	    req.session.message.content) {
 	    messageType = req.session.message.type;
 	    messageContent = req.session.message.content;
-	    req.session.message.type = defaultMessageType;
+	    req.session.message.type = messageDefaultType;
 	    req.session.message.content = null;
 	}
-	_.extend(options, {
+	if (serviceAuth.getPageHash(req, res)) {
+	    pageHash = serviceAuth.getPageHash(req, res);
+	    serviceAuth.deletePageHash(req, res);
+	}
+	options = _.extend(options, {
+	    pageHash: pageHash,
 	    messageType: messageType,
 	    messageContent: messageContent
 	});
+
 	_render.call(this, view, options, fn);
     };
 }
@@ -108,6 +120,7 @@ function privilegeControl (req, res, next) {
     if (req.path !== '/api/auth' &&
 	req.path !== '/account/login' &&
 	req.path !== '/account/dologin' &&
+	req.path !== '/account/doreg' &&
 	!regStatic.test(req.path)) {
 	return res.redirect('/account/login');
     } else {

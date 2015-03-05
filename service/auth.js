@@ -66,3 +66,18 @@ module.exports.expectProjectOwnerPrivilege = function (req, res, projectId) {
 	return true;
     }
 };
+
+//添加页面hash
+module.exports.addPageHash = function (req, res, hash) {
+    req.session.pageHash = hash;
+}
+
+//删除页面hash
+module.exports.deletePageHash = function (req, res) {
+    return req.session.pageHash = null;
+}
+
+//获取页面hash
+module.exports.getPageHash = function (req, res) {
+    return req.session.pageHash;
+}

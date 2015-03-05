@@ -1,12 +1,19 @@
 @import "../base.less";
 
+.display-switch {
+  display: none;
+}
+
 #login-box {
+  &.display-switch {
+    .display-switch;
+  }
+
   @box-margin: 40px;
   @box-width: 100%;
 
   width: 400px;
-  height: 400px;
-  margin: 200px auto;
+  margin: 200px auto 10px auto;
 
   div.input-group {
     width: @box-width;
@@ -23,15 +30,47 @@
       width: @box-width / 2 - 0.5%;
     }
   }
+}
 
-  div.error-msg {
-    margin-top: @box-margin;
-    text-align: center;
+#reg-box {
+  &.display-switch {
+    .display-switch;
   }
 
-  div.check-msg {
-    margin-top: @box-margin;
+  @box-margin: 40px;
+  @box-width: 100%;
+
+  width: 400px;
+  margin: 200px auto 10px auto;
+
+  div.input-group {
+    width: @box-width;
+    margin: @box-margin auto;
+  }
+
+  div.button-group {
+    width: @box-width;
+    margin: 0 auto;
+    button {
+      margin-top: @box-margin / 2;
+      width: @box-width;
+    }
+    input {
+      margin-bottom: @box-margin / 2;
+      width: @box-width;
+    }
+  }
+}
+
+#msg-box {
+  &.display-switch {
+    .display-switch;
+  }
+  width: 400px;
+  margin: 10px auto;
+
+  div.notice-message {
+    margin-top: 40px;
     text-align: center;
-    display: none;
   }
 }

@@ -2,34 +2,51 @@
 <link rel="stylesheet" href="/static/less/account/login.css" xmlns="http://www.w3.org/1999/html"
       xmlns="http://www.w3.org/1999/html"/>
 <div class="row">
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-10">
-        <div id="login-box">
+    <div class="col-md-1"></div>
+    <div class="row col-md-10">
+        <div id="login-box" class="display-switch">
             <form action="/account/dologin" method="post">
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1">Username</span>
-                    <input name="username" type="text" class="form-control" placeholder="请输入 Username" aria-describedby="basic-addon1">
-
+                    <input name="loginUsername" type="text" class="form-control" placeholder="请输入 Username" aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon2">Password</span>
-                    <input name="password" type="password" class="form-control" placeholder="请输入 Password" aria-describedby="basic-addon2">
+                    <input name="loginPassword" type="password" class="form-control" placeholder="请输入 Password" aria-describedby="basic-addon2">
                 </div>
                 <div class="button-group">
                     <input type="submit" class="btn btn-lg" value="登录"></input>
                     <button type="button" class="btn btn-lg">注册</button>
                 </div>
-                <div class="check-msg alert alert-danger">
-                    <p>请填完整的登录信息</p>
-                </div>
-                <!-- 登录提示信息 -->
-                <% if (messageContent) { %>
-                <div class="error-msg alert alert-danger">
-                    <%= messageContent %>
-                </div>
-                <% } %>
             </form>
+        </div>
+        <div id="reg-box" class="display-switch">
+            <form action="/account/doreg" method="post">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="reg-addon1">Username</span>
+                    <input name="regUsername" type="text" class="form-control" placeholder="请输入 Username" aria-describedby="reg-addon1">
+                </div>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="reg-addon2">Password</span>
+                    <input name="regPassword" type="password" class="form-control" placeholder="请输入 Password" aria-describedby="reg-addon2">
+                </div>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="reg-addon3">Password</span>
+                    <input name="regRepassword" type="password" class="form-control" placeholder="请再次输入 Password" aria-describedby="reg-addon3">
+                </div>
+                <div class="button-group">
+                    <input type="submit" class="btn btn-lg" value="注册"></input>
+                    <button type="button" class="btn btn-lg">已有账号，马上去登录</button>
+                </div>
+            </form>
+        </div>
+        <div id="msg-box" class="display-switch">
+            <!-- 操作提示信息 -->
+            <div class="notice-message alert alert-danger">
+                <% if (messageContent) { %>
+                <%= messageContent %>
+                <% } %>
+            </div>
         </div>
     </div>
     <div class="col-md-1"></div>
