@@ -11,7 +11,7 @@ module.exports.create = function (req, res, next) {
 	async.waterfall([
 	    function (cb) {
 		req.db.Project.create({
-		    admin_id: req.user.id,
+		    admin_id: req.session.user.id,
 		    name: projectName
 		}, function(err, row) {
 		    if (err) {
@@ -23,7 +23,7 @@ module.exports.create = function (req, res, next) {
 	    },
 	    function (projectRow, cb) {
 		req.db.Privilege.create({
-		    user_id: req.user.id,
+		    user_id: req.session.user.id,
 		    project_id: projectRow.id,
 		    mode: 'rw'
 		}, function (err) {

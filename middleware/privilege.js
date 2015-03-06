@@ -44,9 +44,9 @@ module.exports = function (req, res, next) {
 			} else {
 			    rows.forEach(function(currVal, index) {
 				if (currVal.mode === 'rw') {
-				    req.session.projects.rw.push(currVal.id);
+				    req.session.projects.rw.push(currVal.project_id);
 				} else if (currVal.mode === 'r') {
-				    req.session.projects.r.push(currVal.id);
+				    req.session.projects.r.push(currVal.project_id);
 				}
 			    });
 			    return cb();

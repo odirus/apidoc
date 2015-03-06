@@ -32,9 +32,6 @@ define(['util', 'app/message_box'], function (util, msgBox) {
 	    };
 
 	    $watchElement.bind('focus', function (eventObj) {
-		console.log('focus');
-
-
 		var $curTarget = $(eventObj.currentTarget),
 		    $parentTarget = $curTarget.parent(),
 		    curValue = $curTarget.val();
