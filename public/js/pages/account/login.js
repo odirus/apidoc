@@ -16,7 +16,5 @@ define(['jquery', 'apps/notify/js/main'], function ($, Notify) {
     //代理点击事件
     $containerBox.delegate('button.toggle-box', 'click', toggleClass);
     //生成提示信息
-    var $notify = $loginBox.notify('append', 'common', {
-	'id': 'notify-box'
-    });
+    var $notify = $loginBox.notify('append', 'common', {'id': 'notify-box'});
 });

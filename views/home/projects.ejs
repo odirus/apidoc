@@ -1,5 +1,5 @@
 <% include ../common/header.ejs %>
-<link rel="stylesheet" href="/static/less/home/projects.css" xmlns="http://www.w3.org/1999/html"
+<link rel="stylesheet" href="/public/less/home/projects.css" xmlns="http://www.w3.org/1999/html"
       xmlns="http://www.w3.org/1999/html"/>
 <div class="row">
     <div class="col-md-1">
@@ -53,11 +53,10 @@
                             <h4 class="modal-title">创建自己的项目</h4>
                         </div>
                         <div class="modal-body">
-                            <input type="text" placeholder="请输入自己的项目名称"/>
+                            <input type="text" class="project-name form-control" placeholder="请输入自己的项目名称"/>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">保存更改</button>
-                            <button type="button" data-dismiss="modal" class="btn btn-default">不想创建</button>
+                            <button type="button" class="submit-new-project btn btn-primary">提交</button>
                         </div>
                     </div>
                 </div>
@@ -66,13 +65,5 @@
     </div>
     <div class="col-md-1"></div>
 </div>
-<script>
-    (function() {
-        "use strict";
-
-        window.apidoc = {};
-        window.apidoc.pageName = "<%= pageName %>";
-    })();
-</script>
-<script type="text/javascript" data-main="/static/js/config"  src="/static/requirejs/require.js"></script>
+<script type="text/javascript" data-main="/public/js/config"  src="/public/js/libs/require.js"></script>
 <% include ../common/footer.ejs %>

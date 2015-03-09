@@ -28,16 +28,8 @@ module.exports = function (app, express) {
     //使用中间件的使用，注意挂载路径
     if (app.get('env') === 'development') {
 	var lessOptions = {debug: true};
-	/**
-	lessOptions = _.extend(lessOptions, {
-	    src: path.join(__dirname, '..', 'public', 'less'),
-	    dest: path.join(__dirname, '..', 'public', 'css'),
-	    compress: true
-	});
-	 */
     }
     app.use('/public', middlewareLess(path.join(__dirname, '..', 'public'), lessOptions));
-    //app.use('/public', express.static(path.join(__dirname, '..', 'public', 'css')));
     app.use('/public', express.static(path.join(__dirname, '..', 'public')));
     app.use(middlewareDatabase);
     app.use(middlewarePrivilege);
