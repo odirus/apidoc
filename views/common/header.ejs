@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-<header>
+<head>
     <title>apidoc</title>
-</header>
+    <meta charset="utf-8"/>
+</head>
 <body>
 <div id="navbar">
     <nav class="navbar navbar-default">
@@ -15,8 +16,10 @@
         </div>
     </nav>
 </div>
-<script id="pageHash" type="text/template">
-    <% if (pageHash) { %>
-    <%= pageHash %>
-    <% } %>
+
+<!-- 保存页面信息 -->
+<script id="pageData" type="text/javascript">
+    window.apidoc = {};
+    window.apidoc.pageHash = "<%= pageHash %>";
+    window.apidoc.pageName = "<%= pageName %>";
 </script>

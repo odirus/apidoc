@@ -11,7 +11,7 @@ module.exports = {
 	expireTime: 3600//单位秒
     },
     database: {
-	host: '192.168.11.11',
+	host: '127.0.0.1',
 	database: 'apidoc',
 	protocol: 'mysql',
 	port: '3306',

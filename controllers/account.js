@@ -14,7 +14,9 @@ var pageHashCollection = {
 //用户登录
 module.exports.login = function (req, res, next) {
     var pageHash;
-    var options = {};
+    var options = {
+	pageName: 'account/login'
+    };
 
     if (req.session.user) {
 	return res.redirect(settings.routes.homePage);

@@ -1,9 +1,18 @@
 @import "../../bower_components/bootstrap/less/bootstrap.less";
 
 @body-background-color: lighten(#000, 93.5%);
+@top-header-height: 60px;
 
 body {
   background-color: @body-background-color;
+}
+
+#navbar {
+  height: @top-header-height;
+
+  div.container-fluid {
+    height: @top-header-height;
+  }
 }
 
 #footer-logo {

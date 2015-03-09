@@ -13,9 +13,7 @@ module.exports.projects = function (req, res, next) {
 	projectsListRW = req.session.projects.rw,
 	projectsListAdmin = req.session.projects.admin;
 
-    if (_.isEmpty(projectsList)) {
-	projectsList = null;
-    }
+
     req.db.Project.find({id: projectsList}, function (err, rows) {
 	if (err) {
 	    return next(err);
@@ -44,7 +42,13 @@ module.exports.projects = function (req, res, next) {
 		    adminPrivi: adminPrivi
 		});
 	    });
+	    if (_.isEmpty(projectsList)) {
+		projectsList = null;
+	    }
 	}
-	res.render('home/projects', {projectsList: projectsList});
+	res.render('home/projects', {
+	    pageName: 'home/projects',
+	    projectsList: projectsList
+	});
     });
 };

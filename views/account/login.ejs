@@ -1,9 +1,9 @@
 <% include ../common/header.ejs %>
-<link rel="stylesheet" href="/static/less/account/login.css" xmlns="http://www.w3.org/1999/html"
+<link rel="stylesheet" href="/public/less/account/login.css" xmlns="http://www.w3.org/1999/html"
       xmlns="http://www.w3.org/1999/html"/>
 <div class="row">
     <div class="col-md-1"></div>
-    <div class="row col-md-10">
+    <div class="row col-md-10" id="container-box">
         <div id="login-box" class="display-switch">
             <form action="/account/dologin" method="post">
                 <div class="input-group input-group-lg">
@@ -16,7 +16,7 @@
                 </div>
                 <div class="button-group">
                     <input type="submit" class="btn btn-lg" value="登录"></input>
-                    <button type="button" class="btn btn-lg">注册</button>
+                    <button type="button" class="toggle-box btn btn-lg">注册</button>
                 </div>
             </form>
         </div>
@@ -36,20 +36,12 @@
                 </div>
                 <div class="button-group">
                     <input type="submit" class="btn btn-lg" value="注册"></input>
-                    <button type="button" class="btn btn-lg">已有账号，马上去登录</button>
+                    <button type="button" class="toggle-box btn btn-lg">已有账号，马上去登录</button>
                 </div>
             </form>
-        </div>
-        <div id="msg-box" class="display-switch">
-            <!-- 操作提示信息 -->
-            <div class="notice-message alert alert-danger">
-                <% if (messageContent) { %>
-                <%= messageContent %>
-                <% } %>
-            </div>
         </div>
     </div>
     <div class="col-md-1"></div>
 </div>
-<script type="text/javascript" data-main="/static/js/pages/account/login"  src="/static/requirejs/require.js"></script>
+<script type="text/javascript" data-main="/public/js/config"  src="/public/js/libs/require.js"></script>
 <% include ../common/footer.ejs %>

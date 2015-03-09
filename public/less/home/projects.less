@@ -1,8 +1,19 @@
 @import "../base.less";
 
+@box-width: 100%;
+@box-min-height: 300px;
+
+.base-box {
+  width: @box-width;
+  min-height: @box-min-height;
+}
+
+@width: 100px;
+
 #projects-box {
-  width: 100%;
-  min-height: 300px;
+  .base-box;
+
+  width: @width;
 
   h3.box-title {
     margin-bottom: 30px;
@@ -15,5 +26,27 @@
 
   table  tr > th, td {
     text-align: center;
+  }
+}
+
+#new-project-box {
+
+  .modal {
+
+    .modal-dialog {
+      margin: 200px auto;
+
+      .modal-body {
+        input {
+          width: 100%;
+          height: 50px;
+          font-size: 30px;
+        }
+      }
+
+      div.modal-footer button {
+        width: 100% / 2 - 1%;
+      }
+    }
   }
 }

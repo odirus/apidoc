@@ -115,7 +115,7 @@ function selfRes (req, res, next) {
 
 //定义路径权限控制
 function privilegeControl (req, res, next) {
-    var regStatic = new RegExp('^/static/');
+    var regStatic = new RegExp('^/public/');
 
     if (req.path !== '/api/auth' &&
 	req.path !== '/account/login' &&
