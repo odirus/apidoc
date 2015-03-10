@@ -1,0 +1,31 @@
+@import '../base.less';
+@import "../../../public/js/libs/editor/editor.less";
+
+@box-input-min-height: 50px;
+@box-input-min-width: 50%;
+@box-min-font-size: 26px;
+
+#new-document {
+  div {
+    margin-bottom: 20px;
+
+    &.title input {
+      min-width: @box-input-min-width;
+      font-size: @box-min-font-size;
+    }
+
+    &.footer input {
+      height: @box-input-min-height;
+      width: @box-input-min-width * 2;
+    }
+  }
+
+  #wmd-input {
+    font-size: @box-min-font-size / 100 * 80;
+  }
+
+  #wmd-preview {
+    min-height: 30px;
+    font-size: @box-min-font-size / 100 * 80;
+  }
+}

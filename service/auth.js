@@ -9,6 +9,11 @@ module.exports.addLoginInfo = function (req, res, userInfo) {
     req.session.user = userInfo;
 };
 
+//获取用户登录信息
+module.exports.getLoginInfo = function (req, res) {
+    return req.session.user;
+};
+
 //删除用户登录信息
 module.exports.deleteLoginInfo = function (req, res) {
     req.session = null;
@@ -39,7 +44,7 @@ module.exports.expectLogin = function (req, res) {
 
 //需要用户拥有对该项目的读写权限
 module.exports.expectProjectRWPrivilege = function (req, res, projectId) {
-    if (_.indexOf(req.projects.rw, projectId) === -1) {
+    if (_.indexOf(req.session.projects.rw, projectId) === -1) {
 	res.status(401).send('需要读写权限');
 	return false;
     } else {
@@ -49,7 +54,7 @@ module.exports.expectProjectRWPrivilege = function (req, res, projectId) {
 
 //需要用户拥有对该项目的读权限
 module.exports.expectProjectRPrivilege = function (req, res, projectId) {
-    if (_.indexOf(req.projects.r, projectId) === -1) {
+    if (_.indexOf(req.session.projects.r, projectId) === -1) {
 	res.status(401).send('需要读权限');
 	return false;
     } else {
@@ -59,7 +64,7 @@ module.exports.expectProjectRPrivilege = function (req, res, projectId) {
 
 //需要用户是该项目的所有者
 module.exports.expectProjectOwnerPrivilege = function (req, res, projectId) {
-    if (_.indexOf(req.projects.admin, projectId) === -1) {
+    if (_.indexOf(req.session.projects.admin, projectId) === -1) {
 	res.status(401).send('需要项目创建者权限');
 	return false;
     } else {
@@ -70,14 +75,14 @@ module.exports.expectProjectOwnerPrivilege = function (req, res, projectId) {
 //添加页面hash
 module.exports.addPageHash = function (req, res, hash) {
     req.session.pageHash = hash;
-}
+};
 
 //删除页面hash
 module.exports.deletePageHash = function (req, res) {
     return req.session.pageHash = null;
-}
+};
 
 //获取页面hash
 module.exports.getPageHash = function (req, res) {
     return req.session.pageHash;
-}
+};

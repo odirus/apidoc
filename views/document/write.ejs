@@ -1,0 +1,32 @@
+<% include ../common/header.ejs %>
+<link rel="stylesheet" href="/public/less/document/write.css" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html"/>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="row col-md-8" id="container-box">
+        <div class="container">
+            <div id="new-document">
+                <div class="title">
+                    <h3><%= projectName %></h3>
+                    <hr/>
+                    <h4>标题</h4>
+                    <input type="text" class="project-name" placeholder="在这里输入标题"/>
+                </div>
+                <div class="editor wmd-panel">
+                    <p>正文</p>
+                    <div id="wmd-button-bar"></div>
+                    <textarea class="wmd-input" id="wmd-input" placeholder="write here"></textarea>
+                </div>
+                <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
+                <div class="footer">
+                    <input type="button" value="提交文档"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<script type="text/javascript" data-main="/public/js/config"  src="/public/js/libs/require.js"></script><script type="text/javascript" src="/public/js/libs/editor/Markdown.Converter.js"></script>
+<script type="text/javascript" src="/public/js/libs/editor/Markdown.Sanitizer.js"></script>
+<script type="text/javascript" src="/public/js/libs/editor/Markdown.Editor.js"></script>
+<% include ../common/footer.ejs %>

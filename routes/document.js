@@ -3,9 +3,9 @@
 var documentControl = require('../controllers/document');
 
 module.exports = function (router) {
-    router.route('/write')
+    router.route('/write/:projectId')
 	.get(documentControl.write);
-    router.route('/read')
+    router.route('/read/:projectId/:documentId')
 	.get(documentControl.read);
 
     return router;

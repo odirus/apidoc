@@ -21,7 +21,7 @@ define([
 	    if ($validator.hasError()) {
 		alert('请根据提示信息填写内容');
 	    } else {
-		createNewProject($, $newProjectBox.find('#project-name').val());
+		createNewProject($, $newProjectBox.find('.project-name').val());
 	    }
 	});
 	$newProjectBox.find('.modal').modal();
@@ -30,10 +30,18 @@ define([
 	    $newProjectBox.find('button.submit-new-project').unbind('click');
 	});
     });
-
-
 });
 
 function createNewProject ($, projectName) {
-
+    $.ajax({
+	type: 'POST',
+	url: '/api/project',
+	data: 'projectName=' + projectName,
+	success: function (data) {
+	    window.location.reload();
+	},
+	error: function (xhr, status) {
+	    alert('项目创建失败');
+	}
+    });
 }
