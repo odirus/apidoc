@@ -8,6 +8,7 @@ module.exports = function (orm, db) {
 	    id: {type: 'serial', key: true},
 	    class_id: {type: 'integer'},
 	    project_id: {type: 'integer'},
+	    title: {type: 'text'},
 	    content_type: ['markdown'],
 	    content: {type: 'text'},
 	    update_time: {type: 'date', time: true}

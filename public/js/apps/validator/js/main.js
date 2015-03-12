@@ -10,6 +10,8 @@ define([
     var rollbackCbList = [];
 
     function Validator ($inputNodes, validateCbList, messageList, needList) {
+	var that = this;
+
 	this.$nodes = $inputNodes;
 	this.needList = needList;
 
@@ -29,25 +31,30 @@ define([
 				'id': id,
 				'content': message
 			    }));
-			$message.addClass('alert-danger');
+			$message.addClass('alert-warning');
+			if (!$inputNode.parent().hasClass('app-validator-input-wraper')) {
+			    $inputNode.wrap('<div class="app-validator-input-wraper"></div>');
+			}
 			if ($inputNode.next().hasClass('app-validator-input')) {
 			    $inputNode.next().replaceWith($message);
 			} else {
-			    $inputNode.after($message);
+			    $inputNode.parent().append($message);
+			}
+			if (!$inputNode.parent().hasClass('has-error')) {
+			    $inputNode.parent().addClass('has-error');
 			}
 			//添加回收任务
 			rollbackCbList.push(
 			    (function (id) {
 				var removeDom = function (id) {
-				    $('#' + id).remove();
+				    var $dom = $('#' + id);
+
+				    $dom.remove();
 				};
 				return _.partial(removeDom, id);
 			    })(id)
 			);
 			//添加回收任务
-			if (!$inputNode.parent().hasClass('has-error')) {
-			    $inputNode.parent().addClass('has-error');
-			}
 			rollbackCbList.push(
 			    (function ($node) {
 				var removeStyle = function ($node) {
@@ -60,13 +67,7 @@ define([
 		}
 	    });
 	    $inputNode.on('focus', function () {
-		if ($inputNode.parent().hasClass('has-error')) {
-		    $inputNode.removeClass('alert-error');
-		    $inputNode.parent().removeClass('has-error');
-		}
-		if (!_.isEmpty($inputNode.next()) && $inputNode.next().hasClass('app-validator-input')) {
-		    $inputNode.next().remove();
-		}
+		return that.rollback();
 	    });
 	});
     }
@@ -81,7 +82,7 @@ define([
 	    if (that.needList[index] && _.isEmpty($(val).val())) {
 		hasError = true;
 	    }
-            //判断填写的值是否符合要求
+	    //判断填写的值是否符合要求
 	    if ($(val).parent().hasClass('has-error')) {
 		hasError = true;
 	    }

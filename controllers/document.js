@@ -21,7 +21,8 @@ module.exports.write = function (req, res, next) {
 	} else {
 	    return res.render('document/write', {
 		pageName: 'document/write',
-		projectName: project.name
+		projectName: project.name,
+		projectId: project.id
 	    });
 	}
     });

@@ -6,6 +6,7 @@ var serviceAuth = require('../service/auth');
 module.exports.create = function (req, res, next) {
     var projectId = parseInt(req.params.projectId);
     var classId = req.body.classId || null;
+    var title = req.body.title;
     var contentType = req.body.contentType;
     var content = req.body.content;
 
@@ -16,6 +17,7 @@ module.exports.create = function (req, res, next) {
     req.db.Document.create({
 	class_id: classId,
 	project_id: projectId,
+	title: title,
 	content_type: contentType,
 	content: content
     }, function(err) {
